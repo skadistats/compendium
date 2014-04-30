@@ -76,8 +76,9 @@ files have names like `12345678.dem`.
 
 Valve uses Google's [Protocol Buffers](https://code.google.com/p/protobuf/)
 (**protobuf** for short) to store data in demo files. You will need a mature,
-full-featured protobuf library to parse demo files. Implementations exist for
-Java, Python, Javascript, C, C++, Go, Haskell, and many other languages.
+full-featured protobuf library to parse demo files on your own.
+Implementations exist for Java, Python, Javascript, C, C++, Go, Haskell, and
+many other languages.
 
 In a nutshell, protobuf allows developers to define **messages** using
 predefined **primitive types** like `uint64`, `string`, and `bytes`. Coders
@@ -209,7 +210,7 @@ Without further elaboration right now, these are:
 
 There is one additional consideration: `DEM_IsCompressed`. Often, the **kind**
 value will seem too high; for example, it will frequently be 119. In binary,
-this value is `01111101`. Note the highest four bits are `0111`.
+this value is `01111101`. Note the four high bits are `0111`.
 
 If we add four 0's to the end, we end up with `01110000`, or 112 in base 10.
 
@@ -255,10 +256,9 @@ level of data compression in exchange for blazing-fast speed.
 See the **kind** description above to learn when decompression is necessary.
 
 
-## Summary
+## Recap
 
-If you comprehended everything above, you are set. This is all the information
-necessary to merely parse a replay file.
+This is all the information necessary to merely parse a replay file.
 
 The next section will introduce a twist: several of the message types detailed
 above embed *an entirely different class* of protobuf messages within them.
